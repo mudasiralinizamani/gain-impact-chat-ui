@@ -17,4 +17,6 @@ export interface IUser {
   lockoutEnd: string;
   lockoutEnabled: boolean;
   accessFailedCount: number;
+  createdAt: string;
+  updatedAt: string;
 }

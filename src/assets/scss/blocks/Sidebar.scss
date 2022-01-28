@@ -1,0 +1,22 @@
+.sidebar5 {
+  width: 290px !important;
+  background: #e3f6fc;
+
+  .sidebar2__category {
+    margin-top: 5px;
+    margin-left: 20px;
+  }
+  .sidebar5__logout {
+    background: #6588de;
+
+    &:hover {
+      background: #186a91;
+    }
+  }
+}
+
+.page5__container {
+  @media only screen and (max-width: 1599px) {
+    padding: 50px 45px;
+  }
+}

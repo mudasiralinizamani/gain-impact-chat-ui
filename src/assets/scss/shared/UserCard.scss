@@ -1,0 +1,44 @@
+.sidebar2__profile {
+  margin: 0.7rem 7px;
+  background: #e3f6fc;
+  border: 1px solid #e3f6fc;
+  transition: all 0.3s ease-out;
+  color: #171725;
+  margin: 0.5rem 0.6rem;
+
+  .ava__pic {
+    border: 1px solid orange;
+  }
+
+  &:hover {
+    transform: scale(1.04);
+    background: #6588de;
+    color: #e3e3e3;
+  }
+
+  .sidebar2__details {
+    width: 100%;
+    .sidebar2__user {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      .name {
+        width: 60%;
+      }
+      .time {
+        width: 40%;
+      }
+    }
+
+    .sidebar2__login {
+      margin-top: 7px;
+      color: #171725;
+    }
+  }
+}
+
+.active {
+  transform: scale(1.04);
+  background: #6588de;
+  color: #e3e3e3;
+}

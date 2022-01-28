@@ -1,0 +1,31 @@
+.chat_wrap {
+  padding: 0.5rem 1rem;
+  height: 100%;
+}
+
+.chat {
+  height: 100%;
+
+  .chat__answer {
+    background: #f3ba4a;
+  }
+}
+
+.chat__body {
+  min-height: 85%;
+}
+
+.field__wrap {
+  display: flex;
+  margin-top: 0.5rem;
+  justify-content: space-between;
+  width: 80%;
+
+  .message_field {
+    width: 90%;
+  }
+
+  .message_button {
+    border-radius: 15px;
+  }
+}

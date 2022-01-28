@@ -51,9 +51,6 @@ function Signin() {
         localStorage.setItem("id", res.data.id);
         localStorage.setItem("role", res.data.role);
         navigate("/chat", { replace: true });
-        enqueueSnackbar(`Welcome in Admin Dashboard`, {
-          variant: "info",
-        });
       })
       .catch((err: AxiosError) => {
         switch (err.response?.data.code) {

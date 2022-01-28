@@ -15,14 +15,14 @@ import Loading from "./shared/Loading";
 import AuthLayout from "./core/layouts/AuthLayout";
 import ChatLayout from "./core/layouts/ChatLayout";
 
-
 // Auth Pages
 const AuthSignin = lazy(() => import("./features/auth/pages/Signin"));
 const AuthSignup = lazy(() => import("./features/auth/pages/Signup"));
 const AuthReset = lazy(() => import("./features/auth/pages/PasswordForget"));
 
 // Chat Pages
-const ChatIndex = lazy(() => import("./features/chat/pages/Chat"))
+const ChatIndex = lazy(() => import("./features/chat/pages/Chat"));
+const ChatChatting = lazy(() => import("./features/chat/pages/Chatting"));
 
 function App() {
   const toastRef = createRef<any>();
@@ -99,6 +99,7 @@ function App() {
           }
         >
           <Route index element={<ChatIndex />} />
+          <Route path="send/:user_id" element={<ChatChatting />} />
         </Route>
       </Routes>
     </div>

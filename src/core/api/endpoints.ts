@@ -3,4 +3,18 @@ const AuthEndpoints = {
   Signin: "/Auth/Signin",
 };
 
-export { AuthEndpoints };
+const UserEndpoints = {
+  GetUsers: "/User/GetUsers",
+  GetUserById: "/User/GetUser/",
+};
+
+const MessageEndpoints = {
+  Create: "/Message/Create",
+  GetBySenderId: "/Message/GetBySenderId/",
+  GetByReceiverId: "/Message/GetByReceiverId/",
+  GetMessages: "/Message/GetMessages",
+  UpdateReply: "/Message/UpdateReply",
+  GetByUserId: "/Message/GetByUserId",
+};
+
+export { AuthEndpoints, UserEndpoints, MessageEndpoints };
