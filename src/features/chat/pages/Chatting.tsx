@@ -55,31 +55,6 @@ function Chatting() {
 
   const SendMessage = async (event: SyntheticEvent) => {
     if (message != undefined && message != "") {
-      if (messages?.length != 0) {
-        let lastMessage = messages[messages?.length - 1];
-        if (lastMessage.reply === "") {
-          const model = {
-            messageId: lastMessage.id,
-            reply: message,
-          };
-          await axios
-            .put(MessageEndpoints.UpdateReply, model)
-            .then((res) => {
-              if (res.data.succeeded) {
-                setMessage("");
-                const getMessages = async () =>
-                  await axios
-                    .post<IMessage[]>(MessageEndpoints.GetMessages, {
-                      senderId: localStorage.getItem("id"),
-                      receiverId: user_id,
-                    })
-                    .then((res) => setMessages(res.data));
-                return getMessages();
-              }
-            })
-            .catch((err: AxiosError) => {});
-        }
-      }
       const model = {
         message: message,
         senderId: localStorage.getItem("id"),
@@ -102,7 +77,9 @@ function Chatting() {
         })
         .catch((err: AxiosError) => {});
     }
-  };
+  };  
+
+  console.log(messages)
 
   return (
     <div className="chat_wrap">
@@ -130,7 +107,6 @@ function Chatting() {
                 message={message.message}
                 name={user?.fullName!}
                 receiverId={message.receiverId}
-                reply={message.reply}
                 senderId={message.senderId}
                 key={message.id}
                 profilePic={user?.profilePic!}

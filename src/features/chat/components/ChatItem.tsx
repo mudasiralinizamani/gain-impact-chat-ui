@@ -6,7 +6,6 @@ interface properties {
   senderId: string;
   id: string;
   message: string;
-  reply: string;
   name: string;
   profilePic: string;
 }
@@ -14,27 +13,8 @@ interface properties {
 function ChatItem(props: properties) {
   return (
     <>
-      <ChatAnswer
-        hide={localStorage.getItem("id") != props.senderId ? true : false}
-        id={props.id}
-        text={props.message}
-      />
       <ChatText
-        hide={
-          localStorage.getItem("id") != props.senderId
-            ? true
-            : false || props.reply === ""
-            ? true
-            : false
-        }
-        id={props.receiverId}
-        name={props.name}
-        profile={props.profilePic}
-        text={props.reply}
-      />
-
-      <ChatText
-        hide={localStorage.getItem("id") != props.senderId ? false : true}
+        hide={localStorage.getItem("id") != props.receiverId ? true : false}
         id={props.receiverId}
         name={props.name}
         profile={props.profilePic}
@@ -42,14 +22,8 @@ function ChatItem(props: properties) {
       />
       <ChatAnswer
         id={props.id}
-        text={props.reply}
-        hide={
-          localStorage.getItem("id") != props.senderId
-            ? false
-            : true || props.reply === ""
-            ? true
-            : false
-        }
+        text={props.message}
+        hide={localStorage.getItem("id") === props.senderId ? false : true}
       />
     </>
   );
