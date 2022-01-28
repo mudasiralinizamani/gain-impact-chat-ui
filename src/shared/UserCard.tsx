@@ -15,7 +15,6 @@ interface properties {
 }
 
 function UserCard(props: properties) {
-  const [messages, setMessages] = useState<IMessage[]>();
   const [lastMessage, setLastMessage] = useState<IMessage | null>();
 
   useEffect(() => {
@@ -31,11 +30,9 @@ function UserCard(props: properties) {
             return setLastMessage(null);
           }
           setLastMessage(res.data[res.data.length - 1]);
-          setMessages(res.data);
         });
     getMessages();
     return () => {
-      setMessages([]);
       setLastMessage(null);
     };
   }, []);

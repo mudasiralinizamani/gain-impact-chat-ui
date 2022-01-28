@@ -2,14 +2,13 @@ import { useSnackbar } from "notistack";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import signout from "../../core/helpers/signout";
 import "../../assets/scss/blocks/Sidebar.scss";
-import UserDetail from "../../shared/UserDetail";
 import { IUser } from "../../core/models/IUser.interface";
 import { useEffect, useState } from "react";
 import { MessageEndpoints, UserEndpoints } from "../../core/api/endpoints";
 import axios from "../../core/api/axios";
 import { AxiosError } from "axios";
 import UserCard from "../../shared/UserCard";
-import { IMessage } from "../../core/models/IMessage.interface";
+
 function Sidebar() {
   const navigate = useNavigate();
   const { enqueueSnackbar } = useSnackbar();
@@ -27,6 +26,7 @@ function Sidebar() {
   }, []);
 
   const closeSidebar = () => {
+    // variables for Closing Sidebar
     let sidebar = document.getElementById("js-sidebar4");
     let html = document.getElementById("dom_html");
     let body = document.getElementById("dom_body");
@@ -38,6 +38,7 @@ function Sidebar() {
     body?.classList.remove("no-scroll");
   };
 
+  // Signout Function
   const handleSignout = () => {
     signout();
     enqueueSnackbar("Successfully signed out", { variant: "info" });

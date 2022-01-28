@@ -1,10 +1,10 @@
 .sidebar2__profile {
   margin: 0.7rem 7px;
-  background: #e3f6fc;
-  border: 1px solid #e3f6fc;
+  background: #ff974a;
+  border: 1px solid #ff974a;
   transition: all 0.3s ease-out;
-  color: #171725;
   margin: 0.5rem 0.6rem;
+  color: #fafafb;
 
   .ava__pic {
     border: 1px solid orange;
@@ -12,8 +12,7 @@
 
   &:hover {
     transform: scale(1.04);
-    background: #6588de;
-    color: #e3e3e3;
+    background: #ff7a17;
   }
 
   .sidebar2__details {
@@ -32,13 +31,13 @@
 
     .sidebar2__login {
       margin-top: 7px;
-      color: #171725;
+      color: #fafafb;
     }
   }
 }
 
 .active {
   transform: scale(1.04);
-  background: #6588de;
-  color: #e3e3e3;
+  background: #ff7a17;
+  color: #fafafb;
 }

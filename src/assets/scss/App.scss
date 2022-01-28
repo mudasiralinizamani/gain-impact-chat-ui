@@ -5,3 +5,10 @@
 .header5 {
   box-shadow: inset 0px -1px 0px #e2e2ea;
 }
+
+.page5__container {
+  padding-top: 0.5rem !important;
+  @media only screen and (max-width: 1599px) {
+    padding: 50px 45px;
+  }
+}

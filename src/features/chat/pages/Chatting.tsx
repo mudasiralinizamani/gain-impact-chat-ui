@@ -9,12 +9,14 @@ import { IMessage } from "../../../core/models/IMessage.interface";
 import { IUser } from "../../../core/models/IUser.interface";
 import ChatItem from "../components/ChatItem";
 import SendIcon from "@mui/icons-material/Send";
+import { useSnackbar } from "notistack";
 
 function Chatting() {
   const { user_id } = useParams();
   const [user, setUser] = useState<IUser | null>();
   const [messages, setMessages] = useState<IMessage[]>();
   const [message, setMessage] = useState<string>("");
+  const { enqueueSnackbar } = useSnackbar();
 
   useEffect(() => {
     const getUser = async () =>
@@ -75,11 +77,24 @@ function Chatting() {
             getMessages();
           }
         })
-        .catch((err: AxiosError) => {});
+        .catch((err: AxiosError) => {
+          switch (err.response?.data.code) {
+            case "SenderNotFound":
+              enqueueSnackbar(err.response.data.error, { variant: "error" });
+              break;
+            case "ReceiverNotFound":
+              enqueueSnackbar(err.response.data.error, { variant: "error" });
+              break;
+            case "ServerError":
+              enqueueSnackbar(err.response.data.error, { variant: "error" });
+              break;
+            default:
+              enqueueSnackbar("Something went wrong", { variant: "warning" });
+              break;
+          }
+        });
     }
-  };  
-
-  console.log(messages)
+  };
 
   return (
     <div className="chat_wrap">

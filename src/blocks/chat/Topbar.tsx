@@ -1,8 +1,25 @@
-interface properties {
-  profilePic?: string;
-}
+import { AxiosError } from "axios";
+import { useEffect, useState } from "react";
+import axios from "../../core/api/axios";
+import { UserEndpoints } from "../../core/api/endpoints";
+import { IUser } from "../../core/models/IUser.interface";
 
-function Topbar(props: properties) {
+function Topbar() {
+  const [user, setUser] = useState<IUser | null>();
+
+  useEffect(() => {
+    const getUser = async () =>
+      await axios
+        .get(UserEndpoints.GetUserById + localStorage.getItem("id"))
+        .then((res) => {
+          setUser(res.data);
+        })
+        .catch((err: AxiosError) => setUser(null));
+    getUser();
+    return () => setUser(null);
+  }, []);
+
+  // function for Opening Sidebar
   const opeSidebar = () => {
     console.log("button is clicked");
     let sidebar = document.getElementById("js-sidebar4");
@@ -27,8 +44,9 @@ function Topbar(props: properties) {
       </button>
       <a className="header5__logo"></a>
       <div className="header__group">
+        <div style={{ marginRight: "5px" }}>{user?.fullName}</div>
         <a className="header__profile">
-          <img className="header__pic" src={props.profilePic} alt="" />
+          <img className="header__pic" src={user?.profilePic} alt="" />
         </a>
       </div>
       <div className="header5__bg js-header4-bg" id="js-header-bg"></div>
